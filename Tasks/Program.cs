@@ -16,8 +16,7 @@
 void Task47() // Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 {
     double[,] array = CreateTwoDimensionRealArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
-
-    Console.WriteLine(TwoDimensionRealArrayToString(array));
+	Console.WriteLine(TwoDimensionRealArrayToString(array));
 
     double[,] CreateTwoDimensionRealArray(int firstLength, int secondLength)
     {
@@ -58,9 +57,8 @@ void Task50() // Задача 50. Напишите программу, кото�
     int[,] array = CreateTwoDimensionIntArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
     int coord1 = ReadInt("первую координату требуемого элемента");
     int coord2 = ReadInt("вторую координату требуемого элемента");
-
-    Console.WriteLine(TwoDimensionIntArrayToString(array));
-    Console.WriteLine();
+	Console.WriteLine();
+	Console.WriteLine(TwoDimensionIntArrayToString(array));
     FindElement(coord1, coord2, array);
 
     void FindElement(int coord1, int coord2, int[,] array)
@@ -85,12 +83,13 @@ void Task52() // Задача 52. Задайте двумерный массив
 {
     int[,] array = CreateTwoDimensionIntArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
     int columnNumber = 0;
-    Console.WriteLine(TwoDimensionIntArrayToString(array));
+	Console.WriteLine(TwoDimensionIntArrayToString(array));
     Console.WriteLine(ColumnAverageSum(columnNumber, array));
 
     string ColumnAverageSum(int columnNumber, int[,] array)
     {
         double sum = 0;
+
         if (columnNumber < array.GetLength(1))
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -101,17 +100,19 @@ void Task52() // Задача 52. Задайте двумерный массив
             sum = sum/(array.GetLength(0));
             columnNumber = columnNumber + 1;
             Console.WriteLine($"Среднее арифметическое элементов в колонке номер {columnNumber} равен {sum}");
+
             return ColumnAverageSum(columnNumber, array);
         }
         else
+
         return string.Empty;
     }
 }
 
 int ReadInt(string argument)
 {
+	int number;
 	Console.Write($"Введите {argument}: ");
-    int number;
 
 	while (!int.TryParse(Console.ReadLine(), out number) || number < 0)
 	{
@@ -123,8 +124,8 @@ int ReadInt(string argument)
 
 int ReadDimensionInt(string argument)
 {
+	int number;
 	Console.Write($"Введите {argument} измерение массива: ");
-    int number;
 
 	while (!int.TryParse(Console.ReadLine(), out number) || number <= 0)
 	{
