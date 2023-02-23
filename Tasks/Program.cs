@@ -1,4 +1,6 @@
-﻿while (true)
+﻿void Main()
+{
+    while (true)
 	{
 		int task = ReadInt("номер задания");
 
@@ -9,13 +11,11 @@
 			case 52: Task52(); break;
 		}
 	}
-
+}
 
 void Task47() // Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 {
-    int m = ReadDimensionInt("первое измерение массива");
-    int n = ReadDimensionInt("второе измерение массива");
-    double[,] array = CreateTwoDimensionRealArray(m, n);
+    double[,] array = CreateTwoDimensionRealArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
 
     Console.WriteLine(TwoDimensionRealArrayToString(array));
 
@@ -28,7 +28,7 @@ void Task47() // Задача 47. Задайте двумерный массив
 	    {
 		    for (int j = 0; j < result.GetLength(1); j++)
 		    {
-			    result[i, j] = rnd.Next(-5, 10) + Math.Round(rnd.NextDouble(), 1);
+			    result[i, j] = Math.Round((rnd.Next(-5, 10) + rnd.NextDouble()),1);
 		    }
 	    }
 
@@ -55,11 +55,9 @@ void Task47() // Задача 47. Задайте двумерный массив
 
 void Task50() // Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
 {
-    int m = ReadDimensionInt("первое измерение массива");
-    int n = ReadDimensionInt("второе измерение массива");
+    int[,] array = CreateTwoDimensionIntArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
     int coord1 = ReadInt("первую координату требуемого элемента");
     int coord2 = ReadInt("вторую координату требуемого элемента");
-    int[,] array = CreateTwoDimensionIntArray(4,7);
 
     Console.WriteLine(TwoDimensionIntArrayToString(array));
     Console.WriteLine();
@@ -85,9 +83,7 @@ void Task50() // Задача 50. Напишите программу, кото�
 
 void Task52() // Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 {
-    int m = ReadDimensionInt("первое измерение массива");
-    int n = ReadDimensionInt("второе измерение массива");
-    int[,] array = CreateTwoDimensionIntArray(m, n);
+    int[,] array = CreateTwoDimensionIntArray(ReadDimensionInt("первое"), ReadDimensionInt("второе"));
     int columnNumber = 0;
     Console.WriteLine(TwoDimensionIntArrayToString(array));
     Console.WriteLine(ColumnAverageSum(columnNumber, array));
@@ -127,7 +123,7 @@ int ReadInt(string argument)
 
 int ReadDimensionInt(string argument)
 {
-	Console.Write($"Введите {argument}: ");
+	Console.Write($"Введите {argument} измерение массива: ");
     int number;
 
 	while (!int.TryParse(Console.ReadLine(), out number) || number <= 0)
